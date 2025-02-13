@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #E35205;
+            --text-color: #333;
+            --background-color: #fff5f0;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--background-color);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(227, 82, 5, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            width: 60%;
+            margin: 0 auto 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(227, 82, 5, 0.2);
+        }
+
+        #profile p, #education ul {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(227, 82, 5, 0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        #education ul {
+            list-style-position: inside;
+        }
+
+        .certificate-item, .activity-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(227, 82, 5, 0.1);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .certificate-item:hover, .activity-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .cert-img, .activity-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            border: 3px solid var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 1rem;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #c64604;
+        }
+
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .popup-content {
+            position: relative;
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 90%;
+            width: 600px;
+            margin: 2rem auto;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li {
+                margin: 0.5rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .popup-content {
+                padding: 1.5rem;
+                margin: 1rem;
+                width: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .popup-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="./assets/runchi.png" alt="Logo" class="logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Profile</a></li>
+                <li><a href="#profile">Education</a></li>
+                <li><a href="#education">Certificate</a></li>
+                <li><a href="#activities">Activities</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1 class="hero-title">PORTFOLIO</h1>
+            <img src="./assets/r1.JPG" alt="Hero Image" class="hero-img">
+        </section>
+
+        <section id="profile">
+            <h2>Profile</h2>
+            <p>My name is Runchida Rungsrikaew, but you can call me Book.
+            I have recently completed my studies in management, but I am passionate about coding. Through my work and projects, I have developed skills in coding. I am eager to continue learning and grow.</p>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <ul>
+                <li>Vocational Certificate of Information Technology,  Siam Business Administration Technological College, 2022&nbsp;&nbsp;<strong>GPA: 3.13</strong></li>
+                <li>Diploma of Management, Pimthai Technological College, 2023&nbsp;&nbsp;<strong>GPA: 3.87</strong></li>
+            </ul>
+        </section>
+
+        <section id="certificate">
+            <h2>Certificate</h2>
+            <div class="certificate-item">
+                <h3>Road to Computer Science and Technology Vol.1</h3>
+                <button class="btn" onclick="openPopup('cert6')">View Certificate</button>
+            </div>
+            <div class="certificate-item">
+                <h3>Python Programming</h3>
+                <button class="btn" onclick="openPopup('cert1')">View Certificate</button>
+            </div>
+            <div class="certificate-item">
+                <h3>COMPUTER NETWORK FOR EVERYONE</h3>
+                <button class="btn" onclick="openPopup('cert2')">View Certificate</button>
+            </div>
+            <div class="certificate-item">
+                <h3>Basic​ Java​script​ for​ Frontend​ Developer​</h3>
+                <button class="btn" onclick="openPopup('cert3')">View Certificate</button>
+            </div>
+            <div class="certificate-item">
+                <h3>ความรู้พื้นฐานสำหรับ QA และ Tester</h3>
+                <button class="btn" onclick="openPopup('cert4')">View Certificate</button>
+            </div>
+            <div class="certificate-item">
+                <h3>Manual Testing และเครื่องมือต่าง ๆ ในการจัดการ Test</h3>
+                <button class="btn" onclick="openPopup('cert5')">View Certificate</button>
+            </div>
+        </section>
+
+        <section id="activities">
+            <h2>Activities</h2>
+            <div class="activity-item">
+                <h3>WorldSkills ASEAN Bangkok 2018</h3>
+                <button class="btn" onclick="openPopup('activity1')">Learn More</button>
+            </div>
+            <div class="activity-item">
+                <h3>The Next Step On Your Robotics & Automation Journey 2019</h3>
+                <button class="btn" onclick="openPopup('activity2')">Learn More</button>
+            </div>
+            <div class="activity-item">
+                <h3>Scratch Workshop The Witch</h3>
+                <button class="btn" onclick="openPopup('activity3')">Learn More</button>
+            </div>
+            <div class="activity-item">
+                <h3>Workshop Capybara Wiki Website</h3>
+                <button class="btn" onclick="openPopup('activity4')">Learn More</button>
+            </div>
+            <div class="activity-item">
+                <h3>My Portfolio Website</h3>
+                <button class="btn" onclick="openPopup('activity5')">Learn More</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Runchida. All rights reserved.</p>
+    </footer>
+
+    <div id="popupOverlay" class="popup-overlay">
+        <div id="popupContent" class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <div id="popupBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

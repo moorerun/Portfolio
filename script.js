@@ -54,6 +54,11 @@ const popupContent = {
         image: "./assets/port.png",
         description: "My Portfolio Website is a personal portfolio website built using HTML, CSS, and JavaScript. It showcases projects, skills, and experiences in web development."
     },
+    activity6: {
+        title: "Web development internship",
+        image: "./assets/a6.png",
+        description: "As a Web Development Intern, I contributed to building and enhancing web applications using JavaScript, HTML, and CSS. My primary responsibility was implementing web pages based on provided design specifications, ensuring responsiveness and user-friendly interfaces."
+    },
 };
 
 function openPopup(contentId) {
